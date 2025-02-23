@@ -12,22 +12,108 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <!-- Custom Styles -->
         <link href="/css/styles.css" rel="stylesheet" />
-        <!-- Header & Footer Scripts -->
-        <script src="/js/loadHeader.js"></script>
-        <script src="/js/loadFooter.js"></script>
         <link
             rel="icon"
             href="/images/BytePenguinFavicon.png"
             type="image/png"
         />
     </head>
-
     <body class="bg-white font-poppins">
-        <!-- Header -->
-        <div id="header-placeholder" class="fixed w-full top-0 z-50"></div>
+        <header
+            id="navbar"
+            class="fixed bg-[#e6fffe] top-0 w-full shadow-md px-4 z-50 transition-all duration-300"
+        >
+            <div
+                class="container mx-auto px-4 py-4 flex justify-between items-center"
+            >
+                <a
+                    href="index.html"
+                    class="flex items-center flex-shrink-0 text-black mr-6"
+                >
+                    <img
+                        src="/images/logo.png"
+                        alt="BytePenguin Logo"
+                        class="h-12 max-w-[70vw] lg:w-auto"
+                    />
+                </a>
+
+                <nav
+                    class="hidden lg:flex justify-center items-center gap-x-2 relative"
+                >
+                    <a
+                        href="index.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >Home</a
+                    >
+                    <a
+                        href="about.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >About</a
+                    >
+                    <a
+                        href="team.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >Our Team</a
+                    >
+                </nav>
+
+                <button id="menu-btn" class="lg:hidden focus:outline-none">
+                    <svg
+                        id="menu-icon"
+                        class="w-6 h-6 text-gray-900"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        ></path>
+                    </svg>
+                    <svg
+                        id="close-icon"
+                        class="w-6 h-6 text-gray-900 hidden"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div
+            id="mobile-menu"
+            class="hidden bg-[#e6fffe] fixed top-16 left-0 right-0 w-full px-4 py-6 transition-all duration-300 z-40 overflow-hidden shadow-md"
+        >
+            <a
+                href="index.html"
+                class="block py-2 px-4 text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >Home</a
+            >
+            <a
+                href="about.html"
+                class="block py-2 px-4 text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >About</a
+            >
+            <a
+                href="team.html"
+                class="block py-2 px-4 text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >Our Team</a
+            >
+        </div>
 
         <main class="relative pt-14 bg-slate-50 min-h-screen">
-            <!-- Team Section -->
             <section class="py-16">
                 <div class="container mx-auto px-6">
                     <h1
@@ -40,16 +126,14 @@
                     >
                         Meet our dedicated team of individuals behind
                         <span class="text-gray-900 font-bold">BytePenguin</span
-                        >, <br />
-                        committed and passionate to empower change through the
-                        use of technology and design.
+                        >, committed and passionate to empower change through
+                        the use of technology and design.
                     </p>
 
-                    <!-- Team Grid -->
                     <div
                         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
                     >
-                        <!-- Member 1 -->
+                        <!-- Team Member -->
                         <div
                             class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
                         >
@@ -64,12 +148,12 @@
                             <p class="text-gray-500">2024 ACJC Graduate</p>
                             <p class="text-gray-700 text-center mt-2">
                                 Founder, <br />
-                                Lead Graphic Designer, <br />
-                                Frontend Developer
+                                Chief Graphic Designer, <br />
+                                Software Developer
                             </p>
                         </div>
 
-                        <!-- Member 2 -->
+                        <!-- Team Member -->
                         <div
                             class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
                         >
@@ -84,12 +168,12 @@
                             <p class="text-gray-500">2024 ACJC Graduate</p>
                             <p class="text-gray-700 text-center mt-2">
                                 Co-Founder, <br />
-                                Lead Frontend Developer, <br />
+                                Chief Software Developer, <br />
                                 UI/UX Developer
                             </p>
                         </div>
 
-                        <!-- Member 3 -->
+                        <!-- Team Member -->
                         <div
                             class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
                         >
@@ -104,11 +188,11 @@
                             <p class="text-gray-500">2024 ACJC Graduate</p>
                             <p class="text-gray-700 text-center mt-2">
                                 Creative Director, <br />
-                                Lead Social Media Manager
+                                Chief Social Media Manager
                             </p>
                         </div>
 
-                        <!-- Member 4 -->
+                        <!-- Team Member -->
                         <div
                             class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
                         >
@@ -126,7 +210,7 @@
                             </p>
                         </div>
 
-                        <!-- Member 5 -->
+                        <!-- Team Member -->
                         <div
                             class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
                         >
@@ -144,7 +228,7 @@
                             </p>
                         </div>
 
-                        <!-- Member 6 -->
+                        <!-- Team Member -->
                         <div
                             class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
                         >
@@ -162,7 +246,7 @@
                             </p>
                         </div>
 
-                        <!-- Member 7 -->
+                        <!-- Team Member -->
                         <div
                             class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
                         >
@@ -184,7 +268,50 @@
             </section>
         </main>
 
-        <!-- Footer -->
         <div id="footer-placeholder"></div>
+
+        <!-- Mobile Menu Script -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const menuBtn = document.getElementById("menu-btn");
+                const mobileMenu = document.getElementById("mobile-menu");
+                const menuIcon = document.getElementById("menu-icon");
+                const closeIcon = document.getElementById("close-icon");
+                const mainContent = document.querySelector("main"); // Fixed: Using main tag for content
+                const navbar = document.getElementById("navbar");
+
+                if (
+                    menuBtn &&
+                    mobileMenu &&
+                    menuIcon &&
+                    closeIcon &&
+                    mainContent &&
+                    navbar
+                ) {
+                    menuBtn.addEventListener("click", function () {
+                        const menuIsVisible =
+                            mobileMenu.classList.contains("hidden");
+
+                        // Toggle mobile menu visibility
+                        mobileMenu.classList.toggle("hidden", !menuIsVisible);
+                        menuIcon.classList.toggle("hidden", !menuIsVisible);
+                        closeIcon.classList.toggle("hidden", menuIsVisible);
+
+                        // Shift main content up or down
+                        if (menuIsVisible) {
+                            mainContent.classList.add("pt-48"); // Add extra padding to shift content down
+                            navbar.classList.remove("shadow-md"); // Remove shadow when menu is open
+                        } else {
+                            mainContent.classList.remove("pt-48"); // Remove extra padding to move content back up
+                            navbar.classList.add("shadow-md"); // Add shadow back when menu is closed
+                        }
+                    });
+                } else {
+                    console.error("Mobile menu elements not found!");
+                }
+            });
+        </script>
+
+        <script src="/js/loadFooter.js"></script>
     </body>
 </html>
