@@ -351,7 +351,7 @@
                         closeIcon.classList.toggle("hidden", !menuIsVisible);
 
                         // Shift main content up or down
-                        if (menuIsVisible) {
+                        if (menuIsVisible && window.scrollY === 0) {
                             mainContent.classList.add("pt-48"); // Add extra padding to shift content down
                             navbar.classList.remove("shadow-md"); // Remove shadow when menu is open
                         } else {
