@@ -298,12 +298,16 @@
                         closeIcon.classList.toggle("hidden", !menuIsVisible);
 
                         // Shift main content up or down
-                        if (menuIsVisible && window.scrollY === 0) {
-                            mainContent.classList.add("pt-36"); // Add extra padding to shift content down
+                        if (menuIsVisible) {
                             navbar.classList.remove("shadow-md"); // Remove shadow when menu is open
+                            if (window.scrollY === 0) {
+                                mainContent.classList.add("pt-48"); // Add extra padding to shift content down
+                            }
                         } else {
-                            mainContent.classList.remove("pt-36"); // Remove extra padding to move content back up
                             navbar.classList.add("shadow-md"); // Add shadow back when menu is closed
+                            if (mainContent.classList.contains("pt-48")) {
+                                mainContent.classList.remove("pt-48"); // Remove extra padding when menu is closed
+                            }
                         }
                     });
                 } else {
