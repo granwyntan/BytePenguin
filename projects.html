@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>BytePenguin | Our Team</title>
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Custom Styles -->
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link
+            rel="icon"
+            href="/images/BytePenguinFavicon.png"
+            type="image/png"
+        />
+    </head>
+    <body class="bg-white font-poppins">
+        <header
+            id="navbar"
+            class="fixed bg-[#e6fffe] top-0 w-full shadow-md px-4 z-50 transition-all duration-300"
+        >
+            <div
+                class="container mx-auto px-4 py-4 flex justify-between items-center"
+            >
+                <a
+                    href="index.html"
+                    class="flex items-center flex-shrink-0 text-black mr-6"
+                >
+                    <img
+                        src="/images/logo.png"
+                        alt="BytePenguin Logo"
+                        class="h-12 max-w-[70vw] lg:w-auto"
+                    />
+                </a>
+
+                <nav
+                    class="hidden lg:flex justify-center items-center gap-x-2 relative"
+                >
+                    <a
+                        href="index.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >Home</a
+                    >
+                    <a
+                        href="about.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >About</a
+                    >
+                    <a
+                        href="team.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >Our Team</a
+                    >
+                    <a
+                        href="projects.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >Projects</a
+                    >
+                </nav>
+
+                <button id="menu-btn" class="lg:hidden focus:outline-none">
+                    <svg
+                        id="menu-icon"
+                        class="w-6 h-6 text-gray-900"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        ></path>
+                    </svg>
+                    <svg
+                        id="close-icon"
+                        class="w-6 h-6 text-gray-900 hidden"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div
+            id="mobile-menu"
+            class="hidden bg-[#e6fffe] fixed top-16 left-0 right-0 w-full px-4 py-6 transition-all duration-300 z-40 overflow-hidden shadow-md"
+        >
+            <a
+                href="index.html"
+                class="block py-2 px-4 text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >Home</a
+            >
+            <a
+                href="about.html"
+                class="block py-2 px-4 text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >About</a
+            >
+            <a
+                href="team.html"
+                class="block py-2 px-4 text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >Our Team</a
+            >
+            <a
+                href="projects.html"
+                class="block py-2 px-4 text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >Projects</a
+            >
+        </div>
+
+        <main class="relative pt-14 bg-slate-50 min-h-screen">
+            <section class="py-16">
+                <div class="container mx-auto px-6">
+                    <h1
+                        class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-6"
+                    >
+                        Projects
+                    </h1>
+                    <p
+                        class="text-lg text-gray-700 text-center max-w-2xl mx-auto mb-10"
+                    >
+                        Work in Progress
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <div id="footer-placeholder"></div>
+
+        <!-- Mobile Menu Script -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const menuBtn = document.getElementById("menu-btn");
+                const mobileMenu = document.getElementById("mobile-menu");
+                const menuIcon = document.getElementById("menu-icon");
+                const closeIcon = document.getElementById("close-icon");
+                const mainContent = document.querySelector("main"); // Fixed: Using main tag for content
+                const navbar = document.getElementById("navbar");
+
+                if (
+                    menuBtn &&
+                    mobileMenu &&
+                    menuIcon &&
+                    closeIcon &&
+                    mainContent &&
+                    navbar
+                ) {
+                    menuBtn.addEventListener("click", function () {
+                        const menuIsVisible =
+                            mobileMenu.classList.contains("hidden");
+
+                        // Toggle mobile menu visibility
+                        mobileMenu.classList.toggle("hidden", !menuIsVisible);
+                        menuIcon.classList.toggle("hidden", menuIsVisible);
+                        closeIcon.classList.toggle("hidden", !menuIsVisible);
+
+                        // Shift main content up or down
+                        if (menuIsVisible) {
+                            navbar.classList.remove("shadow-md"); // Remove shadow when menu is open
+                            if (window.scrollY === 0) {
+                                mainContent.classList.add("pt-56"); // Add extra padding to shift content down
+                            }
+                        } else {
+                            navbar.classList.add("shadow-md"); // Add shadow back when menu is closed
+                            if (mainContent.classList.contains("pt-56")) {
+                                mainContent.classList.remove("pt-56"); // Remove extra padding when menu is closed
+                            }
+                        }
+                    });
+                } else {
+                    console.error("Mobile menu elements not found!");
+                }
+            });
+        </script>
+
+        <script src="/js/loadFooter.js"></script>
+    </body>
+</html>

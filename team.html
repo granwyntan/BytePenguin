@@ -55,6 +55,11 @@
                         class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
                         >Our Team</a
                     >
+                    <a
+                        href="projects.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >Projects</a
+                    >
                 </nav>
 
                 <button id="menu-btn" class="lg:hidden focus:outline-none">
@@ -110,6 +115,11 @@
                 href="team.html"
                 class="block py-2 px-4 text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
                 >Our Team</a
+            >
+            <a
+                href="projects.html"
+                class="block py-2 px-4 text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >Projects</a
             >
         </div>
 
@@ -377,12 +387,12 @@
                         if (menuIsVisible) {
                             navbar.classList.remove("shadow-md"); // Remove shadow when menu is open
                             if (window.scrollY === 0) {
-                                mainContent.classList.add("pt-48"); // Add extra padding to shift content down
+                                mainContent.classList.add("pt-56"); // Add extra padding to shift content down
                             }
                         } else {
                             navbar.classList.add("shadow-md"); // Add shadow back when menu is closed
-                            if (mainContent.classList.contains("pt-48")) {
-                                mainContent.classList.remove("pt-48"); // Remove extra padding when menu is closed
+                            if (mainContent.classList.contains("pt-56")) {
+                                mainContent.classList.remove("pt-56"); // Remove extra padding when menu is closed
                             }
                         }
                     });
