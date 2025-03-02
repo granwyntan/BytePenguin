@@ -131,11 +131,24 @@
                     >
                         Projects
                     </h1>
-                    <p
-                        class="text-lg text-gray-700 text-center max-w-2xl mx-auto mb-10"
+                </div>
+                <div class="flex space-x-6 w-full justify-center px-auto py-6">
+                    <div
+                        class="text-center p-4 bg-[#72BF78] text-white rounded-lg shadow-lg w-64"
                     >
-                        Work in Progress
-                    </p>
+                        <h3 class="text-xl font-semibold">
+                            Websites Completed
+                        </h3>
+                        <p id="completed" class="text-4xl font-bold mt-2">0</p>
+                    </div>
+                    <div
+                        class="text-center p-4 bg-[#FFAE42] text-white rounded-lg shadow-lg w-64"
+                    >
+                        <h3 class="text-xl font-semibold">
+                            Websites Being Built
+                        </h3>
+                        <p id="queue" class="text-4xl font-bold mt-2">0</p>
+                    </div>
                 </div>
             </section>
         </main>
@@ -186,6 +199,24 @@
                     console.error("Mobile menu elements not found!");
                 }
             });
+
+            function animateCount(id, target) {
+                let count = 0;
+                const increment = Math.ceil(target / 50);
+                const element = document.getElementById(id);
+                const interval = setInterval(() => {
+                    count += increment;
+                    if (count >= target) {
+                        element.textContent = target;
+                        clearInterval(interval);
+                    } else {
+                        element.textContent = count;
+                    }
+                }, 50);
+            }
+
+            animateCount("completed", 1);
+            animateCount("queue", 4);
         </script>
 
         <script src="/js/loadFooter.js"></script>
