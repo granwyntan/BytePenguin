@@ -234,15 +234,14 @@
                 const isMobile = /iPhone|iPad|Android/i.test(
                     navigator.userAgent
                 );
+                const warning = document.getElementById("landscape-warning");
 
                 if (isMobile && window.innerWidth > window.innerHeight) {
-                    document
-                        .getElementById("landscape-warning")
-                        .classList.remove("hidden");
+                    warning.classList.remove("hidden");
+                    document.body.style.overflow = "hidden"; // Disable scrolling
                 } else {
-                    document
-                        .getElementById("landscape-warning")
-                        .classList.add("hidden");
+                    warning.classList.add("hidden");
+                    document.body.style.overflow = ""; // Re-enable scrolling
                 }
             }
 
