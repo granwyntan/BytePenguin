@@ -129,7 +129,8 @@
         >
             <a href="#board-of-directors">
                 <svg
-                    class="w-12 h-12 animate-bounce items-center justify-center p-2 bg-slate-50 rounded-full"
+                    id="chevron-down"
+                    class="w-12 h-12 animate-bounce items-center justify-center p-2 rounded-full"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
@@ -561,6 +562,7 @@
                 const closeIcon = document.getElementById("close-icon");
                 const mainContent = document.querySelector("main"); // Fixed: Using main tag for content
                 const navbar = document.getElementById("navbar");
+                const chevronDown = document.getElementById("chevron-down");
 
                 if (
                     menuBtn &&
@@ -584,11 +586,19 @@
                             navbar.classList.remove("shadow-md"); // Remove shadow when menu is open
                             if (window.scrollY === 0) {
                                 mainContent.classList.add("pt-60"); // Add extra padding to shift content down
+                                chevronDown.classList.add(
+                                    "bg-slate-50",
+                                    "shadow-lg"
+                                );
                             }
                         } else {
                             navbar.classList.add("shadow-md"); // Add shadow back when menu is closed
                             if (mainContent.classList.contains("pt-60")) {
                                 mainContent.classList.remove("pt-60"); // Remove extra padding when menu is closed
+                                chevronDown.classList.remove(
+                                    "bg-slate-50",
+                                    "shadow-lg"
+                                );
                             }
                         }
                     });
