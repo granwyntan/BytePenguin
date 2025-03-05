@@ -25,6 +25,12 @@
     </head>
 
     <body class="bg-white font-poppins">
+        <div
+            id="landscape-warning"
+            class="hidden fixed inset-0 bg-gray-900 text-white flex items-center justify-center text-xl z-50"
+        >
+            Please rotate your device to portrait mode.
+        </div>
         <header
             id="navbar"
             class="fixed bg-[#e6fffe] top-0 w-full shadow-md lg:px-6 z-50 transition-all duration-300"
@@ -327,6 +333,25 @@
                     console.error("Mobile menu elements not found!");
                 }
             });
+
+            function checkOrientation() {
+                const isMobile = /iPhone|iPad|Android/i.test(
+                    navigator.userAgent
+                );
+
+                if (isMobile && window.innerWidth > window.innerHeight) {
+                    document
+                        .getElementById("landscape-warning")
+                        .classList.remove("hidden");
+                } else {
+                    document
+                        .getElementById("landscape-warning")
+                        .classList.add("hidden");
+                }
+            }
+
+            window.addEventListener("resize", checkOrientation);
+            window.addEventListener("load", checkOrientation);
         </script>
     </body>
 </html>
