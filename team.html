@@ -148,7 +148,7 @@
             </a>
         </div>
 
-        <main class="relative pt-12 lg:pt-24 bg-slate-50 px-6 justify-center">
+        <main class="relative pt-12 lg:pt-24 bg-slate-50 px-4 justify-center">
             <div
                 id="teamheading"
                 class="h-[85vh] w-full flex flex-col justify-evenly items-center"
@@ -586,12 +586,12 @@
                         if (menuIsVisible) {
                             navbar.classList.remove("shadow-md"); // Remove shadow when menu is open
                             if (window.scrollY === 0) {
-                                mainContent.classList.add("pt-56"); // Add extra padding to shift content down
+                                mainContent.classList.add("pt-60"); // Add extra padding to shift content down
                             }
                         } else {
                             navbar.classList.add("shadow-md"); // Add shadow back when menu is closed
-                            if (mainContent.classList.contains("pt-56")) {
-                                mainContent.classList.remove("pt-56"); // Remove extra padding when menu is closed
+                            if (mainContent.classList.contains("pt-60")) {
+                                mainContent.classList.remove("pt-60"); // Remove extra padding when menu is closed
                             }
                         }
                     });

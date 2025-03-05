@@ -18,7 +18,7 @@
             type="image/png"
         />
     </head>
-    <body class="bg-white font-poppins">
+    <body class="bg-white font-poppins mx-auto">
         <header
             id="navbar"
             class="fixed bg-[#e6fffe] top-0 w-full shadow-md px-4 z-50 transition-all duration-300"
@@ -123,18 +123,20 @@
             >
         </div>
 
-        <main class="relative pt-14 bg-slate-50 min-h-screen">
+        <main
+            class="relative pt-14 bg-slate-50 min-h-screen mx-auto px-4 w-full flex justify-center"
+        >
             <section class="py-16">
-                <div class="container mx-auto px-6">
+                <div class="container px-4">
                     <h1
                         class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-6"
                     >
                         Projects
                     </h1>
                 </div>
-                <div class="flex space-x-6 w-full justify-center px-auto py-6">
+                <div class="flex space-x-6 py-6">
                     <div
-                        class="text-center p-4 bg-[#72BF78] text-white rounded-lg shadow-lg w-64"
+                        class="text-center p-4 bg-[#72BF78] text-white rounded-lg shadow-lg w-auto max-w-[40vw] lg:w-64"
                     >
                         <h3 class="text-xl font-semibold">
                             Websites Completed
@@ -142,7 +144,7 @@
                         <p id="completed" class="text-4xl font-bold mt-2">0</p>
                     </div>
                     <div
-                        class="text-center p-4 bg-[#FFAE42] text-white rounded-lg shadow-lg w-64"
+                        class="text-center p-4 bg-[#FFAE42] text-white rounded-lg shadow-lg w-auto max-w-[40vw] lg:w-64"
                     >
                         <h3 class="text-xl font-semibold">
                             Websites Being Built
@@ -186,12 +188,12 @@
                         if (menuIsVisible) {
                             navbar.classList.remove("shadow-md"); // Remove shadow when menu is open
                             if (window.scrollY === 0) {
-                                mainContent.classList.add("pt-56"); // Add extra padding to shift content down
+                                mainContent.classList.add("pt-60"); // Add extra padding to shift content down
                             }
                         } else {
                             navbar.classList.add("shadow-md"); // Add shadow back when menu is closed
-                            if (mainContent.classList.contains("pt-56")) {
-                                mainContent.classList.remove("pt-56"); // Remove extra padding when menu is closed
+                            if (mainContent.classList.contains("pt-60")) {
+                                mainContent.classList.remove("pt-60"); // Remove extra padding when menu is closed
                             }
                         }
                     });
