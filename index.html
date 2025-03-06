@@ -153,17 +153,17 @@
                         >
                             <div class="relative pt-20 pb-6">
                                 <h1
-                                    class="text-4xl lg:text-5xl font-regular text-gray-900 leading-relaxed"
+                                    class="text-3xl lg:text-4xl font-regular text-gray-900 leading-relaxed"
                                 >
                                     Empowering Change
                                     <br />
-                                    with
+                                    With
                                     <span class="text-gray-900 font-bold"
                                         >BytePenguin</span
                                     >
                                 </h1>
                                 <p
-                                    class="text-lg text-gray-700 mt-4 leading-relaxed"
+                                    class="text-lg text-gray-700 mt-4 leading-relaxed text-justify"
                                 >
                                     Helping charities and community
                                     organisations create and improve websites
@@ -335,9 +335,7 @@
             });
 
             function checkOrientation() {
-                const isMobile = /iPhone|Android/i.test(
-                    navigator.userAgent
-                );
+                const isMobile = /iPhone|Android/i.test(navigator.userAgent);
                 const warning = document.getElementById("landscape-warning");
 
                 if (isMobile && window.innerWidth > window.innerHeight) {
