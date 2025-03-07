@@ -2,7 +2,7 @@ name: Sync Repositories
 
 on:
   schedule:
-    - cron: "*/15 * * * *"  # Runs every 30 minutes
+    - cron: "*/30 * * * *"  # Runs every 30 minutes
   push:
     branches:
       - main  # Runs on every push to the main branch
@@ -16,13 +16,15 @@ jobs:
       - name: Checkout Source Repository
         uses: actions/checkout@v4
 
-      - name: Add Destination Repository as Remote
+      - name: Set up Git
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
+
+      - name: Add Destination Repository as Remote
+        run: |
           git remote add destination https://github.com/BytePenguinCode/BytePenguin.git
           git fetch destination main
           git push --force destination main
         env:
-          USERNAME: BytePenguinCode
-          TOKEN: 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
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
