@@ -20,6 +20,11 @@ jobs:
           token: ${{ secrets.GH_PAT }}  # Ensure this secret is set
           path: temp  # Clone into "temp" folder
 
+      - name: Verify Cloned Files
+        run: |
+          echo "[LOG] Listing cloned files from granwyntan/BytePenguin"
+          ls -lah temp
+
       - name: Configure Git
         run: |
           git config --global user.email "${{ secrets.USER_EMAIL }}"
@@ -36,7 +41,7 @@ jobs:
           cd temp
           echo "[LOG] Checking Git Status"
           git status
-          git diff
+          git diff --stat
 
       - name: Sync and Push Changes
         run: |
@@ -44,6 +49,7 @@ jobs:
           echo "[LOG] Staging changes"
           git add .
 
+          # Check if there are any changes before committing
           if git diff --staged --quiet; then
             echo "[LOG] No changes to commit."
           else
