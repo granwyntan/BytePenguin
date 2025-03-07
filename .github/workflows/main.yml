@@ -90,6 +90,11 @@ jobs:
             git commit -m "Sync new files from granwyntan/BytePenguin"
             echo "[LOG] Pushing changes to BytePenguinCode/BytePenguin"
 
+            # Add debug information about remote URL and authentication
+            echo "[LOG] Remote URL:"
+            git remote -v
+            echo "[LOG] Attempting to push..."
+            
             # Try to push to the destination, capture and handle any errors
-            git push destination main || { echo "[ERROR] Push failed!"; exit 1; }
+            git push destination main --force || { echo "[ERROR] Push failed!"; exit 1; }
           fi
