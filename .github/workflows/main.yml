@@ -48,7 +48,7 @@ jobs:
           cd temp
           echo "[LOG] Pulling changes from destination repository"
           git fetch destination  # Fetch latest changes from destination repo
-          git pull --no-rebase destination main  # Use merge strategy to pull changes from destination repo
+          git pull --allow-unrelated-histories --no-rebase destination main  # Allow unrelated histories to merge
 
       # Copy files from the source repository to the temp folder
       - name: Copy Files from Source Repo to Temp Directory
