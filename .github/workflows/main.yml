@@ -33,10 +33,25 @@ jobs:
           git remote add destination https://${{ secrets.GH_PAT }}@github.com/BytePenguinCode/BytePenguin.git
           git fetch destination  # Fetch the destination repo
 
+      - name: Check for Main or Master Branch in Destination Repo
+        run: |
+          cd temp
+          echo "[LOG] Checking for main or master branch in destination repository"
+          if git show-ref --verify --quiet refs/remotes/destination/main; then
+            echo "[LOG] 'main' branch exists in destination."
+            export BRANCH="main"
+          elif git show-ref --verify --quiet refs/remotes/destination/master; then
+            echo "[LOG] 'master' branch exists in destination."
+            export BRANCH="master"
+          else
+            echo "[ERROR] Neither 'main' nor 'master' branch found in destination repository."
+            exit 1
+          fi
+
       - name: Clean Destination Repository (BytePenguinCode/BytePenguin)
         run: |
-          echo "[LOG] Cleaning BytePenguinCode/BytePenguin repository"
           cd temp
+          echo "[LOG] Cleaning BytePenguinCode/BytePenguin repository"
           git rm -r --cached .  # Remove all files from the git index (without deleting from local)
           git commit -m "Clean the repository before syncing new files"  # Commit the removal of old files
 
@@ -52,14 +67,13 @@ jobs:
           git status
           git diff --stat
 
-      - name: Reset Remote Repository (Force Push)
+      - name: Reset Remote Repository to Main/Master Branch
         run: |
           cd temp
-          echo "[LOG] Resetting to destination repository's main branch"
+          echo "[LOG] Resetting to destination repository's main or master branch"
           
-          # Reset to destination's main branch
-          git fetch destination main
-          git reset --hard destination/main
+          git fetch destination $BRANCH
+          git reset --hard destination/$BRANCH
           git clean -fd  # Clean untracked files
 
       - name: Sync and Push Changes to Destination Repo (BytePenguinCode/BytePenguin)
@@ -75,5 +89,5 @@ jobs:
             echo "[LOG] Committing new files"
             git commit -m "Sync new files from granwyntan/BytePenguin"
             echo "[LOG] Pushing changes to BytePenguinCode/BytePenguin"
-            git push --force destination main || { echo "[ERROR] Push failed!"; exit 1; }
+            git push --force destination $BRANCH || { echo "[ERROR] Push failed!"; exit 1; }
           fi
