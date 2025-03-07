@@ -35,57 +35,37 @@ jobs:
           echo "[LOG] Adding destination remote repository"
           git remote add destination https://${{ secrets.GH_PAT }}@github.com/BytePenguinCode/BytePenguin.git
 
-      # Stash any uncommitted local changes
+      # Stash any uncommitted local changes (if any)
       - name: Stash Local Changes (if any)
         run: |
           cd temp
           echo "[LOG] Stashing local changes"
           git stash -u  # Stash all local changes (including untracked files)
 
-      # Pull changes from the destination repository
-      - name: Pull changes from Destination Repository (BytePenguinCode/BytePenguin)
+      # Force push source repository's files to the destination repository
+      - name: Push changes to Destination Repository (BytePenguinCode/BytePenguin)
         run: |
           cd temp
-          echo "[LOG] Pulling changes from destination repository"
-          git fetch destination  # Fetch latest changes from destination repo
-          git pull --allow-unrelated-histories --no-rebase destination main  # Allow unrelated histories to merge
+          echo "[LOG] Pushing changes from source to destination repository"
+          
+          # Fetch the latest changes from destination repo
+          git fetch destination
+          
+          # Reset to the latest state of the source (granwyntan/BytePenguin)
+          git reset --hard HEAD  # Ensure we're in a clean state, aligned with source repository
 
-      # Copy files from the source repository to the temp folder
-      - name: Copy Files from Source Repo to Temp Directory
-        run: |
-          echo "[LOG] Copying files from granwyntan/BytePenguin"
-          cp -r * ../temp  # Copy all files from source to temp directory
+          # Stage all changes
+          git add .
+          
+          # Commit the changes
+          git commit -m "Sync new files from granwyntan/BytePenguin"
+          
+          # Force push the changes directly to the destination repository
+          git push --force destination main || { echo "[ERROR] Push failed!"; exit 1; }
 
-      # Debug Git Status
+      # Debug Git Status (optional)
       - name: Debug Git Status
         run: |
           cd temp
           echo "[LOG] Checking Git Status"
           git status
-          git diff --stat
-
-      # Restore stashed changes, if any, after the pull
-      - name: Restore Stashed Changes (if any)
-        run: |
-          cd temp
-          echo "[LOG] Restoring stashed changes"
-          git stash pop || echo "[LOG] No changes to restore"
-
-      # Stage, commit, and push changes to the destination repository (BytePenguinCode/BytePenguin)
-      - name: Sync and Push Changes to Destination Repo (BytePenguinCode/BytePenguin)
-        run: |
-          cd temp
-          echo "[LOG] Staging new files"
-          git add .
-          
-          # Check if there are any changes before committing
-          if git diff --staged --quiet; then
-            echo "[LOG] No changes to commit."
-          else
-            echo "[LOG] Committing new files"
-            git commit -m "Sync new files from granwyntan/BytePenguin"
-            echo "[LOG] Pushing changes to BytePenguinCode/BytePenguin"
-
-            # Attempt to push to the destination repo
-            git push destination main || { echo "[ERROR] Push failed!"; exit 1; }
-          fi
