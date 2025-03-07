@@ -5,8 +5,8 @@ on:
     - cron: "*/15 * * * *"  # Runs every 15 minutes
   push:
     branches:
-      - main  # Runs on every push to main
-  workflow_dispatch:  # Allows manual trigger
+      - main  # Runs on every push to main branch
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   sync:
@@ -20,11 +20,6 @@ jobs:
           token: ${{ secrets.GH_PAT }}  # Ensure this secret is set
           path: temp  # Clone into "temp" folder
 
-      - name: Verify Cloned Files
-        run: |
-          echo "[LOG] Listing cloned files from granwyntan/BytePenguin"
-          ls -lah temp
-
       - name: Configure Git for Destination Repo (BytePenguinCode/BytePenguin)
         run: |
           echo "[LOG] Setting up Git"
@@ -36,33 +31,19 @@ jobs:
           cd temp
           echo "[LOG] Adding destination remote repository"
           git remote add destination https://${{ secrets.GH_PAT }}@github.com/BytePenguinCode/BytePenguin.git
-          git fetch --all  # Fetch all remote references
-
-      - name: Check Default Branch of Destination Repository
-        run: |
-          cd temp
-          echo "[LOG] Checking the default branch of the destination repository"
-          # Get the default branch name from the destination repository
-          DEFAULT_BRANCH=$(git remote show destination | grep 'HEAD branch' | awk '{print $NF}')
-          echo "[LOG] Default branch of destination repository is $DEFAULT_BRANCH"
-          echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
+          git fetch destination  # Fetch the destination repo
 
       - name: Clean Destination Repository (BytePenguinCode/BytePenguin)
         run: |
           echo "[LOG] Cleaning BytePenguinCode/BytePenguin repository"
           cd temp
-          git rm -r --cached .  # Removes all files in the repo (staged for removal)
-          git commit -m "Clean the repository before syncing new files"
-
-      - name: Delete Old Files from Temp Directory
-        run: |
-          echo "[LOG] Deleting old files from temp"
-          rm -rf ../temp/*  # Remove all files from temp directory before copying
+          git rm -r --cached .  # Remove all files from the git index (without deleting from local)
+          git commit -m "Clean the repository before syncing new files"  # Commit the removal of old files
 
       - name: Copy Files from Source Repo to Temp Directory
         run: |
           echo "[LOG] Copying files from granwyntan/BytePenguin"
-          cp -r * ../temp  # Copy all files from source to temp
+          cp -r * ../temp  # Copy all files from source to temp directory
 
       - name: Debug Git Status
         run: |
@@ -74,20 +55,14 @@ jobs:
       - name: Reset Remote Repository (Force Push)
         run: |
           cd temp
-          echo "[LOG] Resetting to destination repository's default branch"
-          git fetch destination ${{ env.DEFAULT_BRANCH }} || echo "[LOG] Default branch not found"
+          echo "[LOG] Resetting to destination repository's main branch"
           
-          # If default branch exists, reset to the latest state of destination's branch
-          if git show-ref --verify --quiet refs/remotes/destination/${{ env.DEFAULT_BRANCH }}; then
-            echo "[LOG] Resetting to destination ${{ env.DEFAULT_BRANCH }} branch"
-            git reset --hard destination/${{ env.DEFAULT_BRANCH }}
-          else
-            echo "[LOG] No default branch found on destination. Skipping reset."
-          fi
-          
+          # Reset to destination's main branch
+          git fetch destination main
+          git reset --hard destination/main
           git clean -fd  # Clean untracked files
 
-      - name: Sync and Push Changes to Destination Repo
+      - name: Sync and Push Changes to Destination Repo (BytePenguinCode/BytePenguin)
         run: |
           cd temp
           echo "[LOG] Staging new files"
@@ -100,5 +75,5 @@ jobs:
             echo "[LOG] Committing new files"
             git commit -m "Sync new files from granwyntan/BytePenguin"
             echo "[LOG] Pushing changes to BytePenguinCode/BytePenguin"
-            git push --force destination ${{ env.DEFAULT_BRANCH }} || { echo "[ERROR] Push failed!"; exit 1; }
+            git push --force destination main || { echo "[ERROR] Push failed!"; exit 1; }
           fi
