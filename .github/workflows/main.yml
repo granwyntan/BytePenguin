@@ -62,6 +62,14 @@ jobs:
           git status
           git diff --stat
 
+      - name: Reset Remote Repository (Force Push)
+        run: |
+          cd temp
+          echo "[LOG] Resetting destination repository"
+          git fetch destination main
+          git reset --hard destination/main  # Reset to the destination's main branch
+          git clean -fd  # Clean untracked files
+
       - name: Sync and Push Changes to Destination Repo
         run: |
           cd temp
