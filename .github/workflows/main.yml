@@ -59,6 +59,13 @@ jobs:
           git status
           git diff --stat
 
+      # Stage new files to the repository
+      - name: Stage New Files for Commit
+        run: |
+          cd temp
+          echo "[LOG] Staging new files"
+          git add .  # Stage all new files
+
       # Reset the destination repository to the latest state (force sync)
       - name: Reset Destination Repository to Latest State
         run: |
