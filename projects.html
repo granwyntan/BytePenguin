@@ -132,10 +132,8 @@
         <main
             class="relative pt-14 bg-slate-50 min-h-screen mx-auto px-6 w-screen flex flex-col justify-center items-center"
         >
-            <section class="py-16">
-                <div
-                    class="container px-6 justify-center w-full flex items-center"
-                >
+            <section class="pt-16 pb-12 md:pb-16 mx-auto px-0">
+                <div class="container flex justify-center w-full items-center">
                     <h1
                         class="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-12"
                     >
@@ -143,10 +141,10 @@
                     </h1>
                 </div>
                 <div
-                    class="flex flex-col space-y-6 px-0 lg:flex-row lg:space-x-6 lg:justify-stretch lg:space-y-0 w-full lg:px-auto"
+                    class="flex flex-col justify-items-stretch space-y-6 md:px-4 lg:flex-row lg:space-x-6 lg:justify-stretch lg:space-y-0 w-full lg:px-auto"
                 >
                     <div
-                        class="text-center p-4 bg-[#72BF78] text-white rounded-lg shadow-lg w-full lg:w-64"
+                        class="text-center p-4 bg-[#72BF78] text-white rounded-lg justify-items-stretch shadow-lg w-full lg:w-64"
                     >
                         <h3 class="text-xl font-semibold">
                             Websites Completed
@@ -154,7 +152,7 @@
                         <p id="completed" class="text-4xl font-bold mt-2">0</p>
                     </div>
                     <div
-                        class="text-center p-4 bg-[#FFAE42] text-white rounded-lg shadow-lg w-full lg:w-64"
+                        class="text-center p-4 bg-[#FFAE42] text-white rounded-lg justify-items-stretch shadow-lg w-full lg:w-64"
                     >
                         <h3 class="text-xl font-semibold">
                             Websites Being Built
@@ -168,18 +166,19 @@
             <div
                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full lg:px-4 pb-10 mx-auto"
             >
-                <!-- Project 1 -->
                 <div
-                    class="relative w-full aspect-[3/4] md:aspect-[7/8] lg:aspect-square rounded-xl overflow-hidden shadow-lg group"
+                    class="relative w-full aspect-[3/4] md:aspect-[7/8] lg:aspect-square rounded-xl overflow-hidden shadow-lg group flex flex-col"
                 >
-                    <img
-                        src="/images/project-lighthouse.png"
-                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
+                    <a href="https://projectlighthouse.vercel.app/">
+                        <img
+                            src="/images/project-lighthouse.png"
+                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-125 group-touch-pinch-zoom:scale-125"
+                        />
+                    </a>
                     <div
-                        class="absolute bottom-0 w-full h-3/5 bg-gray-900/50 backdrop-blur-md flex flex-col items-start justify-between p-6"
+                        class="absolute bottom-0 w-full bg-gray-900/50 backdrop-blur-md flex flex-col items-start justify-between p-4 sm:p-6 space-y-3 min-h-[50%]"
                     >
-                        <div class="space-y-3">
+                        <div class="space-y-2 sm:space-y-3">
                             <h2 class="text-white text-lg md:text-xl font-bold">
                                 Project Lighthouse
                             </h2>
@@ -192,58 +191,71 @@
                                 📍 Singapore
                             </p>
                         </div>
-                        <a
-                            href="https://projectlighthouse.vercel.app/"
-                            class="bg-white text-black py-2 px-4 rounded-md hover:bg-gray-200 transition duration-300 self-start"
-                            >View website</a
+                        <div
+                            class="flex flex-col md:flex-row items-start md:items-start md:justify-start space-y-2 md:space-y-0 md:space-x-3 mt-2"
                         >
-                    </div>
-                </div>
+                            <!-- Website Link -->
+                            <a
+                                href="https://projectlighthouse.vercel.app/"
+                                class="bg-white text-black rounded-md hover:bg-gray-200 transition duration-300 inline-flex items-center px-3 py-2 space-x-1 w-auto"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    class="w-5 h-5"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M5.63605 5.63605C7.19815 4.07395 9.73081 4.07395 11.2929 5.63605L14.1213 8.46448C15.6834 10.0266 15.6834 12.5592 14.1213 14.1213C13.7308 14.5119 13.0976 14.5119 12.7071 14.1213C12.3166 13.7308 12.3166 13.0976 12.7071 12.7071C13.4882 11.9261 13.4882 10.6597 12.7071 9.87869L9.87869 7.05026C9.09764 6.26922 7.83131 6.26922 7.05026 7.05026C6.26922 7.83131 6.26922 9.09764 7.05026 9.87869L7.75737 10.5858C8.1479 10.9763 8.14789 11.6095 7.75737 12C7.36685 12.3905 6.73368 12.3905 6.34316 12L5.63605 11.2929C4.07395 9.73081 4.07395 7.19815 5.63605 5.63605ZM11.2929 9.8787C11.6834 10.2692 11.6834 10.9024 11.2929 11.2929C10.5119 12.074 10.5119 13.3403 11.2929 14.1213L14.1213 16.9498C14.9024 17.7308 16.1687 17.7308 16.9498 16.9498C17.7308 16.1687 17.7308 14.9024 16.9498 14.1213L16.2427 13.4142C15.8521 13.0237 15.8521 12.3905 16.2427 12C16.6332 11.6095 17.2663 11.6095 17.6569 12L18.364 12.7071C19.9261 14.2692 19.9261 16.8019 18.364 18.364C16.8019 19.9261 14.2692 19.9261 12.7071 18.364L9.8787 15.5356C8.3166 13.9735 8.3166 11.4408 9.8787 9.8787C10.2692 9.48817 10.9024 9.48817 11.2929 9.8787Z"
+                                        fill="black"
+                                    />
+                                </svg>
+                                <span>Website</span>
+                            </a>
 
-                <!-- Project 2 -->
-                <div
-                    class="relative w-full aspect-[3/4] md:aspect-[7/8] lg:aspect-square rounded-xl overflow-hidden shadow-lg group"
-                >
-                    <img
-                        src=""
-                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <div
-                        class="absolute bottom-0 w-full h-3/5 bg-gray-900/50 backdrop-blur-md flex flex-col items-start justify-between p-6"
-                    >
-                        <div class="space-y-3">
-                            <h2 class="text-white text-lg lg:text-xl font-bold">
-                                Mind4Matter
-                            </h2>
-                            <p class="text-white text-sm">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Vivamus lacinia odio vitae
-                                vestibulum.
-                            </p>
-                            <p class="text-white text-sm font-semibold">
-                                📍 USA
-                            </p>
+                            <!-- Instagram Link -->
+                            <a
+                                href="https://instagram.com/proj_lighthouse"
+                                class="bg-white text-black rounded-md hover:bg-gray-200 transition duration-300 inline-flex items-center px-3 py-2 space-x-1 w-auto"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    stroke="black"
+                                    stroke-width="4"
+                                    viewBox="0 0 256 256"
+                                    class="w-5 h-5"
+                                >
+                                    <path
+                                        fill="black"
+                                        stroke="black"
+                                        stroke-width="4"
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M128,84a44,44,0,1,0,44,44A44.04978,44.04978,0,0,0,128,84Zm0,80a36,36,0,1,1,36-36A36.04061,36.04061,0,0,1,128,164ZM172,32H84A52.059,52.059,0,0,0,32,84v88a52.059,52.059,0,0,0,52,52h88a52.059,52.059,0,0,0,52-52V84A52.059,52.059,0,0,0,172,32Zm44,140a44.04978,44.04978,0,0,1-44,44H84a44.04978,44.04978,0,0,1-44-44V84A44.04978,44.04978,0,0,1,84,40h88a44.04978,44.04978,0,0,1,44,44ZM188,76a8,8,0,1,1-8-8A8.00917,8.00917,0,0,1,188,76Z"
+                                    />
+                                </svg>
+                                <span>Instagram</span>
+                            </a>
                         </div>
-                        <a
-                            href=""
-                            class="bg-white text-black py-2 px-4 rounded-md hover:bg-gray-200 transition duration-300 self-start"
-                            >View website</a
-                        >
                     </div>
                 </div>
 
-                <!-- Project 3 -->
                 <div
-                    class="relative w-full aspect-[3/4] md:aspect-[7/8] lg:aspect-square rounded-xl overflow-hidden shadow-lg group"
+                    class="relative w-full aspect-[3/4] md:aspect-[7/8] lg:aspect-square rounded-xl overflow-hidden shadow-lg group flex flex-col"
                 >
-                    <img
-                        src=""
-                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
+                    <a href="https://aetherismagazine.vercel.app/">
+                        <img
+                            src=""
+                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-125 group-touch-pinch-zoom:scale-125"
+                        />
+                    </a>
                     <div
-                        class="absolute bottom-0 w-full h-3/5 bg-gray-900/50 backdrop-blur-md flex flex-col items-start justify-between p-6"
+                        class="absolute bottom-0 w-full bg-gray-900/50 backdrop-blur-md flex flex-col items-start justify-between p-4 sm:p-6 space-y-3 min-h-[50%]"
                     >
-                        <div class="space-y-3">
+                        <div class="space-y-2 sm:space-y-3">
                             <h2 class="text-white text-lg lg:text-xl font-bold">
                                 Aetheris Magazine
                             </h2>
@@ -256,28 +268,73 @@
                                 📍 India & USA
                             </p>
                         </div>
-                        <a
-                            href=""
-                            class="bg-white text-black py-2 px-4 rounded-md hover:bg-gray-200 transition duration-300 self-start"
-                            >View website</a
+                        <div
+                            class="flex flex-col md:flex-row items-start md:items-start md:justify-start space-y-2 md:space-y-0 md:space-x-3 mt-2"
                         >
+                            <!-- Website Link -->
+                            <a
+                                href="https://aetherismagazine.vercel.app/"
+                                class="bg-white text-black rounded-md hover:bg-gray-200 transition duration-300 inline-flex items-center px-3 py-2 space-x-1 w-auto"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    class="w-5 h-5"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M5.63605 5.63605C7.19815 4.07395 9.73081 4.07395 11.2929 5.63605L14.1213 8.46448C15.6834 10.0266 15.6834 12.5592 14.1213 14.1213C13.7308 14.5119 13.0976 14.5119 12.7071 14.1213C12.3166 13.7308 12.3166 13.0976 12.7071 12.7071C13.4882 11.9261 13.4882 10.6597 12.7071 9.87869L9.87869 7.05026C9.09764 6.26922 7.83131 6.26922 7.05026 7.05026C6.26922 7.83131 6.26922 9.09764 7.05026 9.87869L7.75737 10.5858C8.1479 10.9763 8.14789 11.6095 7.75737 12C7.36685 12.3905 6.73368 12.3905 6.34316 12L5.63605 11.2929C4.07395 9.73081 4.07395 7.19815 5.63605 5.63605ZM11.2929 9.8787C11.6834 10.2692 11.6834 10.9024 11.2929 11.2929C10.5119 12.074 10.5119 13.3403 11.2929 14.1213L14.1213 16.9498C14.9024 17.7308 16.1687 17.7308 16.9498 16.9498C17.7308 16.1687 17.7308 14.9024 16.9498 14.1213L16.2427 13.4142C15.8521 13.0237 15.8521 12.3905 16.2427 12C16.6332 11.6095 17.2663 11.6095 17.6569 12L18.364 12.7071C19.9261 14.2692 19.9261 16.8019 18.364 18.364C16.8019 19.9261 14.2692 19.9261 12.7071 18.364L9.8787 15.5356C8.3166 13.9735 8.3166 11.4408 9.8787 9.8787C10.2692 9.48817 10.9024 9.48817 11.2929 9.8787Z"
+                                        fill="black"
+                                    />
+                                </svg>
+                                <span>Website</span>
+                            </a>
+
+                            <!-- Instagram Link -->
+                            <a
+                                href="https://www.instagram.com/aetherismagazine/"
+                                class="bg-white text-black rounded-md hover:bg-gray-200 transition duration-300 inline-flex items-center px-3 py-2 space-x-1 w-auto"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    stroke="black"
+                                    stroke-width="4"
+                                    viewBox="0 0 256 256"
+                                    class="w-5 h-5"
+                                >
+                                    <path
+                                        fill="black"
+                                        stroke="black"
+                                        stroke-width="4"
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M128,84a44,44,0,1,0,44,44A44.04978,44.04978,0,0,0,128,84Zm0,80a36,36,0,1,1,36-36A36.04061,36.04061,0,0,1,128,164ZM172,32H84A52.059,52.059,0,0,0,32,84v88a52.059,52.059,0,0,0,52,52h88a52.059,52.059,0,0,0,52-52V84A52.059,52.059,0,0,0,172,32Zm44,140a44.04978,44.04978,0,0,1-44,44H84a44.04978,44.04978,0,0,1-44-44V84A44.04978,44.04978,0,0,1,84,40h88a44.04978,44.04978,0,0,1,44,44ZM188,76a8,8,0,1,1-8-8A8.00917,8.00917,0,0,1,188,76Z"
+                                    />
+                                </svg>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 4 -->
                 <div
-                    class="relative w-full aspect-[3/4] md:aspect-[7/8] lg:aspect-square rounded-xl overflow-hidden shadow-lg group"
+                    class="relative w-full aspect-[3/4] md:aspect-[7/8] lg:aspect-square rounded-xl overflow-hidden shadow-lg group flex flex-col"
                 >
-                    <img
-                        src=""
-                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
+                    <a href="https://mind4matterorg.vercel.app/">
+                        <img
+                            src=""
+                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-125 group-touch-pinch-zoom:scale-125"
+                        />
+                    </a>
                     <div
-                        class="absolute bottom-0 w-full h-3/5 bg-gray-900/50 backdrop-blur-md flex flex-col items-start justify-between p-6"
+                        class="absolute bottom-0 w-full bg-gray-900/50 backdrop-blur-md flex flex-col items-start justify-between p-4 sm:p-6 space-y-3 min-h-[50%]"
                     >
-                        <div class="space-y-3">
+                        <div class="space-y-2 sm:space-y-3">
                             <h2 class="text-white text-lg lg:text-xl font-bold">
-                                Ambulance Wish Singapore
+                                Mind4Matter
                             </h2>
                             <p class="text-white text-sm">
                                 Lorem ipsum dolor sit amet, consectetur
@@ -285,29 +342,74 @@
                                 vestibulum.
                             </p>
                             <p class="text-white text-sm font-semibold">
-                                📍 Singapore
+                                📍 USA
                             </p>
                         </div>
-                        <a
-                            href=""
-                            class="bg-white text-black py-2 px-4 rounded-md hover:bg-gray-200 transition duration-300 self-start"
-                            >View website</a
+                        <div
+                            class="flex flex-col md:flex-row items-start md:items-start md:justify-start space-y-2 md:space-y-0 md:space-x-3 mt-2"
                         >
+                            <!-- Website Link -->
+                            <a
+                                href="https://mind4matterorg.vercel.app/"
+                                class="bg-white text-black rounded-md hover:bg-gray-200 transition duration-300 inline-flex items-center px-3 py-2 space-x-1 w-auto"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    class="w-5 h-5"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M5.63605 5.63605C7.19815 4.07395 9.73081 4.07395 11.2929 5.63605L14.1213 8.46448C15.6834 10.0266 15.6834 12.5592 14.1213 14.1213C13.7308 14.5119 13.0976 14.5119 12.7071 14.1213C12.3166 13.7308 12.3166 13.0976 12.7071 12.7071C13.4882 11.9261 13.4882 10.6597 12.7071 9.87869L9.87869 7.05026C9.09764 6.26922 7.83131 6.26922 7.05026 7.05026C6.26922 7.83131 6.26922 9.09764 7.05026 9.87869L7.75737 10.5858C8.1479 10.9763 8.14789 11.6095 7.75737 12C7.36685 12.3905 6.73368 12.3905 6.34316 12L5.63605 11.2929C4.07395 9.73081 4.07395 7.19815 5.63605 5.63605ZM11.2929 9.8787C11.6834 10.2692 11.6834 10.9024 11.2929 11.2929C10.5119 12.074 10.5119 13.3403 11.2929 14.1213L14.1213 16.9498C14.9024 17.7308 16.1687 17.7308 16.9498 16.9498C17.7308 16.1687 17.7308 14.9024 16.9498 14.1213L16.2427 13.4142C15.8521 13.0237 15.8521 12.3905 16.2427 12C16.6332 11.6095 17.2663 11.6095 17.6569 12L18.364 12.7071C19.9261 14.2692 19.9261 16.8019 18.364 18.364C16.8019 19.9261 14.2692 19.9261 12.7071 18.364L9.8787 15.5356C8.3166 13.9735 8.3166 11.4408 9.8787 9.8787C10.2692 9.48817 10.9024 9.48817 11.2929 9.8787Z"
+                                        fill="black"
+                                    />
+                                </svg>
+                                <span>Website</span>
+                            </a>
+
+                            <!-- Instagram Link -->
+                            <a
+                                href="https://www.instagram.com/mind4matter.global"
+                                class="bg-white text-black rounded-md hover:bg-gray-200 transition duration-300 inline-flex items-center px-3 py-2 space-x-1 w-auto"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    stroke="black"
+                                    stroke-width="4"
+                                    viewBox="0 0 256 256"
+                                    class="w-5 h-5"
+                                >
+                                    <path
+                                        fill="black"
+                                        stroke="black"
+                                        stroke-width="4"
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M128,84a44,44,0,1,0,44,44A44.04978,44.04978,0,0,0,128,84Zm0,80a36,36,0,1,1,36-36A36.04061,36.04061,0,0,1,128,164ZM172,32H84A52.059,52.059,0,0,0,32,84v88a52.059,52.059,0,0,0,52,52h88a52.059,52.059,0,0,0,52-52V84A52.059,52.059,0,0,0,172,32Zm44,140a44.04978,44.04978,0,0,1-44,44H84a44.04978,44.04978,0,0,1-44-44V84A44.04978,44.04978,0,0,1,84,40h88a44.04978,44.04978,0,0,1,44,44ZM188,76a8,8,0,1,1-8-8A8.00917,8.00917,0,0,1,188,76Z"
+                                    />
+                                </svg>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project 5 -->
                 <div
-                    class="relative w-full aspect-[3/4] md:aspect-[7/8] lg:aspect-square rounded-xl overflow-hidden shadow-lg group"
+                    class="relative w-full aspect-[3/4] md:aspect-[7/8] lg:aspect-square rounded-xl overflow-hidden shadow-lg group flex flex-col"
                 >
-                    <img
-                        src=""
-                        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    />
+                    <a href="https://thebetteringbranch.vercel.app/">
+                        <img
+                            src=""
+                            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-125 group-touch-pinch-zoom:scale-125"
+                        />
+                    </a>
                     <div
-                        class="absolute bottom-0 w-full h-3/5 bg-gray-900/50 backdrop-blur-md flex flex-col items-start justify-between p-6"
+                        class="absolute bottom-0 w-full bg-gray-900/50 backdrop-blur-md flex flex-col items-start justify-between p-4 sm:p-6 space-y-3 min-h-[50%]"
                     >
-                        <div class="space-y-3">
+                        <div class="space-y-2 sm:space-y-3">
                             <h2 class="text-white text-lg lg:text-xl font-bold">
                                 The Bettering Branch
                             </h2>
@@ -320,11 +422,55 @@
                                 📍 Singapore
                             </p>
                         </div>
-                        <a
-                            href=""
-                            class="bg-white text-black py-2 px-4 rounded-md hover:bg-gray-200 transition duration-300 self-start"
-                            >View website</a
+                        <div
+                            class="flex flex-col md:flex-row items-start md:items-start md:justify-start space-y-2 md:space-y-0 md:space-x-3 mt-2"
                         >
+                            <!-- Website Link -->
+                            <a
+                                href="https://thebetteringbranch.vercel.app/"
+                                class="bg-white text-black rounded-md hover:bg-gray-200 transition duration-300 inline-flex items-center px-3 py-2 space-x-1 w-auto"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    class="w-5 h-5"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M5.63605 5.63605C7.19815 4.07395 9.73081 4.07395 11.2929 5.63605L14.1213 8.46448C15.6834 10.0266 15.6834 12.5592 14.1213 14.1213C13.7308 14.5119 13.0976 14.5119 12.7071 14.1213C12.3166 13.7308 12.3166 13.0976 12.7071 12.7071C13.4882 11.9261 13.4882 10.6597 12.7071 9.87869L9.87869 7.05026C9.09764 6.26922 7.83131 6.26922 7.05026 7.05026C6.26922 7.83131 6.26922 9.09764 7.05026 9.87869L7.75737 10.5858C8.1479 10.9763 8.14789 11.6095 7.75737 12C7.36685 12.3905 6.73368 12.3905 6.34316 12L5.63605 11.2929C4.07395 9.73081 4.07395 7.19815 5.63605 5.63605ZM11.2929 9.8787C11.6834 10.2692 11.6834 10.9024 11.2929 11.2929C10.5119 12.074 10.5119 13.3403 11.2929 14.1213L14.1213 16.9498C14.9024 17.7308 16.1687 17.7308 16.9498 16.9498C17.7308 16.1687 17.7308 14.9024 16.9498 14.1213L16.2427 13.4142C15.8521 13.0237 15.8521 12.3905 16.2427 12C16.6332 11.6095 17.2663 11.6095 17.6569 12L18.364 12.7071C19.9261 14.2692 19.9261 16.8019 18.364 18.364C16.8019 19.9261 14.2692 19.9261 12.7071 18.364L9.8787 15.5356C8.3166 13.9735 8.3166 11.4408 9.8787 9.8787C10.2692 9.48817 10.9024 9.48817 11.2929 9.8787Z"
+                                        fill="black"
+                                    />
+                                </svg>
+                                <span>Website</span>
+                            </a>
+
+                            <!-- Instagram Link -->
+                            <a
+                                href="https://www.instagram.com/thebetteringbranch/"
+                                class="bg-white text-black rounded-md hover:bg-gray-200 transition duration-300 inline-flex items-center px-3 py-2 space-x-1 w-auto"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    stroke="black"
+                                    stroke-width="4"
+                                    viewBox="0 0 256 256"
+                                    class="w-5 h-5"
+                                >
+                                    <path
+                                        fill="black"
+                                        stroke="black"
+                                        stroke-width="4"
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M128,84a44,44,0,1,0,44,44A44.04978,44.04978,0,0,0,128,84Zm0,80a36,36,0,1,1,36-36A36.04061,36.04061,0,0,1,128,164ZM172,32H84A52.059,52.059,0,0,0,32,84v88a52.059,52.059,0,0,0,52,52h88a52.059,52.059,0,0,0,52-52V84A52.059,52.059,0,0,0,172,32Zm44,140a44.04978,44.04978,0,0,1-44,44H84a44.04978,44.04978,0,0,1-44-44V84A44.04978,44.04978,0,0,1,84,40h88a44.04978,44.04978,0,0,1,44,44ZM188,76a8,8,0,1,1-8-8A8.00917,8.00917,0,0,1,188,76Z"
+                                    />
+                                </svg>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
