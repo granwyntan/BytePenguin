@@ -57,5 +57,5 @@ jobs:
             git commit -m "Sync from granwyntan/BytePenguin"
 
             echo "[LOG] Pushing changes"
-            git push --force destination main || echo "[ERROR] Push failed!"
+            git push --force destination main
           fi
