@@ -45,11 +45,15 @@ jobs:
           git rm -r --cached .  # Removes all files in the repo (staged for removal)
           git commit -m "Clean the repository before syncing new files"
 
+      - name: Delete Old Files from Temp Directory
+        run: |
+          echo "[LOG] Deleting old files from temp"
+          rm -rf ../temp/*  # Remove all files from temp directory before copying
+
       - name: Copy Files from Source Repo to Temp Directory
         run: |
-          cd temp
           echo "[LOG] Copying files from granwyntan/BytePenguin"
-          cp -r * ../temp
+          cp -r * ../temp  # Copy all files from source to temp
 
       - name: Debug Git Status
         run: |
