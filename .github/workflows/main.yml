@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the source repo (granwyntan/BytePenguin)
-      - name: Checkout Source Repository (granwyntan/BytePenguin)
+      # Checkout the destination repo (BytePenguinCode/BytePenguin)
+      - name: Checkout Destination Repository (BytePenguinCode/BytePenguin)
         uses: actions/checkout@v4
         with:
-          repository: "granwyntan/BytePenguin"
+          repository: "BytePenguinCode/BytePenguin"
           token: ${{ secrets.GH_PAT }}  # Ensure this secret is set
-          path: temp  # Clone into "temp" folder
+          path: destination  # Clone into "destination" folder
 
       # Set up Git for the destination repo (BytePenguinCode/BytePenguin)
       - name: Configure Git for Destination Repo (BytePenguinCode/BytePenguin)
@@ -28,58 +28,60 @@ jobs:
           git config --global user.email "${{ secrets.USER_EMAIL }}"
           git config --global user.name "${{ secrets.USER_NAME }}"
 
-      # Add destination repository as remote and fetch latest changes
-      - name: Add Destination Repository (BytePenguinCode/BytePenguin)
+      # Add source repository as remote and fetch changes
+      - name: Add Source Repository (granwyntan/BytePenguin)
         run: |
-          cd temp
-          echo "[LOG] Adding destination remote repository"
-          git remote add destination https://${{ secrets.GH_PAT }}@github.com/BytePenguinCode/BytePenguin.git
-          git fetch destination  # Fetch the latest changes from the destination repo
+          cd destination
+          echo "[LOG] Adding source remote repository"
+          git remote add source https://${{ secrets.GH_PAT }}@github.com/granwyntan/BytePenguin.git
+          echo "[LOG] Fetching changes from source repository"
+          git fetch source  # Fetch the latest changes from source repo
 
-      # Clean destination repository (remove all old files)
+      # Clean the destination repo (remove old files)
       - name: Clean Destination Repository (BytePenguinCode/BytePenguin)
         run: |
-          cd temp
-          echo "[LOG] Cleaning BytePenguinCode/BytePenguin repository"
+          cd destination
+          echo "[LOG] Cleaning destination repository"
           git rm -r --cached .  # Remove all files from the git index (without deleting from local)
           git commit -m "Clean the repository before syncing new files"  # Commit the removal of old files
 
-      # Copy files from the source repository to the temp folder
-      - name: Copy Files from Source Repo to Temp Directory
+      # Clone the source repository (granwyntan/BytePenguin) into a temporary folder
+      - name: Checkout Source Repository (granwyntan/BytePenguin)
+        uses: actions/checkout@v4
+        with:
+          repository: "granwyntan/BytePenguin"
+          token: ${{ secrets.GH_PAT }}
+          path: temp  # Clone into a temporary folder
+
+      # Copy files from the source repository into the destination repo directory
+      - name: Copy Files from Source Repo to Destination Repo
         run: |
           echo "[LOG] Copying files from granwyntan/BytePenguin"
-          cp -r * ../temp  # Copy all files from source to temp directory
+          cp -r temp/* destination/  # Copy all files from source repo to destination folder
 
-      # Debug Git Status
+      # Debug Git Status (optional)
       - name: Debug Git Status
         run: |
-          cd temp
+          cd destination
           echo "[LOG] Checking Git Status"
           git status
-          git diff --stat
-
-      # Reset the destination repository to the latest state (force sync)
-      - name: Reset Destination Repository to Latest State
-        run: |
-          cd temp
-          echo "[LOG] Resetting destination repository to the latest state"
-          git fetch destination
-          git reset --hard destination/main  # Reset to the main branch of the destination repo
-          git clean -fd  # Clean untracked files
 
       # Stage, commit, and push changes to the destination repository (BytePenguinCode/BytePenguin)
       - name: Sync and Push Changes to Destination Repo (BytePenguinCode/BytePenguin)
         run: |
-          cd temp
+          cd destination
           echo "[LOG] Staging new files"
           git add .
           
           # Check if there are any changes before committing
           if git diff --staged --quiet; then
-            echo "[LOG] No changes to commit."
-          else
-            echo "[LOG] Committing new files"
-            git commit -m "Sync new files from granwyntan/BytePenguin"
-            echo "[LOG] Pushing changes to BytePenguinCode/BytePenguin"
-            git push --force destination main || { echo "[ERROR] Push failed!"; exit 1; }
+            echo "[LOG] No changes detected."
+            exit 0
           fi
+
+          echo "[LOG] Committing new files"
+          git commit -m "Sync new files from granwyntan/BytePenguin"
+          echo "[LOG] Pushing changes to BytePenguinCode/BytePenguin"
+
+          # Push the changes to the destination repository (BytePenguinCode/BytePenguin)
+          git push origin main || { echo "[ERROR] Push failed!"; exit 1; }
