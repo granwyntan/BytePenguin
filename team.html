@@ -564,7 +564,44 @@
             </section>
         </main>
 
-        <div id="footer-placeholder"></div>
+        <footer class="bg-[#e6fffe] py-10">
+            <div class="container mx-auto px-4">
+                <!-- Desktop Layout: Two Columns -->
+                <div
+                    class="flex flex-col md:flex-row justify-between text-center md:text-left"
+                >
+                    <!-- Left Column: Logo and Copyright -->
+                    <div
+                        class="flex flex-col justify-between md:justify-center h-full md:px-8"
+                    >
+                        <img
+                            src="/images/footer-logo.png"
+                            alt="BytePenguin Footer Logo"
+                            class="mx-auto h-auto w-[40vw] md:w-[25vw] lg:w-[15vw] xl:w-[10vw] mb-4 md:mx-0"
+                        />
+                        <p class="text-gray-700 text-center md:text-left">
+                            &copy; 2025 BytePenguin. All Rights Reserved.
+                        </p>
+                    </div>
+
+                    <!-- Right Column: Contributors and Last Updated -->
+                    <div
+                        class="flex flex-col justify-between md:justify-center text-center md:text-right h-full md:px-8 px-6 py-4"
+                    >
+                        <p class="text-gray-700 text-xs md:text-sm mb-2">
+                            Contributors: Granwyn Tan, Isaac Chua, Kevin Chua,
+                            Ng Ying Xuan
+                        </p>
+                        <p
+                            class="text-gray-700 text-xs md:text-sm"
+                            id="last-updated"
+                        >
+                            Last Updated: Loading Date...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
         <!-- Mobile Menu Script -->
         <script>
