@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         } catch (error) {
             console.error("Error fetching commit date:", error);
-            lastUpdatedElement.innerText = "Last Updated: 2025";
+            lastUpdatedElement.innerText = "Last Updated: Failed to Load";
         }
     }
 
