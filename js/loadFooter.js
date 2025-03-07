@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("/footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-            document.getElementById("footer-placeholder").innerHTML = data;
-        });
+    // fetch("/footer.html")
+    //     .then((response) => response.text())
+    //     .then((data) => {
+    //         document.getElementById("footer-placeholder").innerHTML = data;
+    //     });
 
     async function fetchLastCommitDate() {
         const repo = "BytePenguinCode/BytePenguin"; // Replace with your GitHub repo
