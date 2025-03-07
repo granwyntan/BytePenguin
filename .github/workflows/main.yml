@@ -27,4 +27,5 @@ jobs:
           git fetch destination main
           git push --force destination main
         env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically available in workflows
+
