@@ -28,22 +28,21 @@ jobs:
           git config --global user.email "${{ secrets.USER_EMAIL }}"
           git config --global user.name "${{ secrets.USER_NAME }}"
 
-      # Add destination repository as remote and fetch latest changes
+      # Add destination repository as remote
       - name: Add Destination Repository (BytePenguinCode/BytePenguin)
         run: |
           cd temp
           echo "[LOG] Adding destination remote repository"
           git remote add destination https://${{ secrets.GH_PAT }}@github.com/BytePenguinCode/BytePenguin.git
-          echo "[LOG] Fetching latest changes from destination"
-          git fetch destination  # Fetch the latest changes from the destination repo
 
       # Clean destination repository (remove all old files)
       - name: Clean Destination Repository (BytePenguinCode/BytePenguin)
         run: |
           cd temp
-          echo "[LOG] Cleaning BytePenguinCode/BytePenguin repository"
-          git rm -r --cached .  # Remove all files from the git index (without deleting from local)
-          git commit -m "Clean the repository before syncing new files"  # Commit the removal of old files
+          echo "[LOG] Cleaning destination repository"
+          git fetch destination  # Fetch latest changes from destination repo
+          git reset --hard destination/main  # Reset to the latest commit in destination's main branch
+          git clean -fd  # Clean up any untracked files in the repo
 
       # Copy files from the source repository to the temp folder
       - name: Copy Files from Source Repo to Temp Directory
@@ -58,22 +57,6 @@ jobs:
           echo "[LOG] Checking Git Status"
           git status
           git diff --stat
-
-      # Stage new files to the repository
-      - name: Stage New Files for Commit
-        run: |
-          cd temp
-          echo "[LOG] Staging new files"
-          git add .  # Stage all new files
-
-      # Reset the destination repository to the latest state (force sync)
-      - name: Reset Destination Repository to Latest State
-        run: |
-          cd temp
-          echo "[LOG] Resetting destination repository to the latest state"
-          git fetch destination
-          git reset --hard destination/main  # Reset to the main branch of the destination repo
-          git clean -fd  # Clean untracked files
 
       # Stage, commit, and push changes to the destination repository (BytePenguinCode/BytePenguin)
       - name: Sync and Push Changes to Destination Repo (BytePenguinCode/BytePenguin)
@@ -90,11 +73,6 @@ jobs:
             git commit -m "Sync new files from granwyntan/BytePenguin"
             echo "[LOG] Pushing changes to BytePenguinCode/BytePenguin"
 
-            # Add debug information about remote URL and authentication
-            echo "[LOG] Remote URL:"
-            git remote -v
-            echo "[LOG] Attempting to push..."
-            
-            # Try to push to the destination, capture and handle any errors
+            # Attempt to push to the destination repo
             git push destination main --force || { echo "[ERROR] Push failed!"; exit 1; }
           fi
