@@ -2,7 +2,7 @@ name: Sync Repositories
 
 on:
   schedule:
-    - cron: "*/15 * * * *"  # Runs every 30 minutes
+    - cron: "*/15 * * * *"  # Runs every 15 minutes
   push:
     branches:
       - main  # Runs on every push to the main branch
@@ -27,4 +27,4 @@ jobs:
           git fetch destination main
           git push --force destination main
         env:
-          GH_PAT: ${{ secrets.GH_PAT }}  # Use your custom GH_PAT token from secrets
+          GH_PAT: ${{ secrets.GH_PAT }}
