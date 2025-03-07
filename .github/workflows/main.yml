@@ -38,13 +38,6 @@ jobs:
           git remote add destination https://${{ secrets.GH_PAT }}@github.com/BytePenguinCode/BytePenguin.git
           git fetch destination main || echo "[LOG] No existing main branch"
 
-      - name: Clean Destination Repository (BytePenguinCode/BytePenguin)
-        run: |
-          echo "[LOG] Cleaning BytePenguinCode/BytePenguin repository"
-          cd temp
-          git rm -r --cached .  # Removes all files in the repo (staged for removal)
-          git commit -m "Clean the repository before syncing new files"
-
       - name: Delete Old Files from Temp Directory
         run: |
           echo "[LOG] Deleting old files from temp"
