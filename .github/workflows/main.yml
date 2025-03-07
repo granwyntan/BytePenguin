@@ -41,7 +41,7 @@ jobs:
           cd temp
           echo "[LOG] Cleaning destination repository"
           git fetch destination  # Fetch latest changes from destination repo
-          git reset --hard destination/main  # Reset to the latest commit in destination's main branch
+          git reset --hard destination/main  # Forcefully reset to the latest commit in destination's main branch
           git clean -fd  # Clean up any untracked files in the repo
 
       # Copy files from the source repository to the temp folder
