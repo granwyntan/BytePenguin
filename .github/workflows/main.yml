@@ -36,7 +36,23 @@ jobs:
           cd temp
           echo "[LOG] Adding destination remote repository"
           git remote add destination https://${{ secrets.GH_PAT }}@github.com/BytePenguinCode/BytePenguin.git
-          git fetch destination main || echo "[LOG] No existing main branch"
+          git fetch --all  # Fetch all remote references
+
+      - name: Check Default Branch of Destination Repository
+        run: |
+          cd temp
+          echo "[LOG] Checking the default branch of the destination repository"
+          # Get the default branch name from the destination repository
+          DEFAULT_BRANCH=$(git remote show destination | grep 'HEAD branch' | awk '{print $NF}')
+          echo "[LOG] Default branch of destination repository is $DEFAULT_BRANCH"
+          echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
+
+      - name: Clean Destination Repository (BytePenguinCode/BytePenguin)
+        run: |
+          echo "[LOG] Cleaning BytePenguinCode/BytePenguin repository"
+          cd temp
+          git rm -r --cached .  # Removes all files in the repo (staged for removal)
+          git commit -m "Clean the repository before syncing new files"
 
       - name: Delete Old Files from Temp Directory
         run: |
@@ -58,9 +74,17 @@ jobs:
       - name: Reset Remote Repository (Force Push)
         run: |
           cd temp
-          echo "[LOG] Resetting destination repository"
-          git fetch destination main
-          git reset --hard destination/main  # Reset to the destination's main branch
+          echo "[LOG] Resetting to destination repository's default branch"
+          git fetch destination ${{ env.DEFAULT_BRANCH }} || echo "[LOG] Default branch not found"
+          
+          # If default branch exists, reset to the latest state of destination's branch
+          if git show-ref --verify --quiet refs/remotes/destination/${{ env.DEFAULT_BRANCH }}; then
+            echo "[LOG] Resetting to destination ${{ env.DEFAULT_BRANCH }} branch"
+            git reset --hard destination/${{ env.DEFAULT_BRANCH }}
+          else
+            echo "[LOG] No default branch found on destination. Skipping reset."
+          fi
+          
           git clean -fd  # Clean untracked files
 
       - name: Sync and Push Changes to Destination Repo
@@ -76,5 +100,5 @@ jobs:
             echo "[LOG] Committing new files"
             git commit -m "Sync new files from granwyntan/BytePenguin"
             echo "[LOG] Pushing changes to BytePenguinCode/BytePenguin"
-            git push --force destination main || { echo "[ERROR] Push failed!"; exit 1; }
+            git push --force destination ${{ env.DEFAULT_BRANCH }} || { echo "[ERROR] Push failed!"; exit 1; }
           fi
