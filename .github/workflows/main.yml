@@ -29,8 +29,14 @@ jobs:
         run: |
           cd temp
           git remote add destination https://${{ secrets.GH_PAT }}@github.com/BytePenguinCode/BytePenguin.git
-          git fetch destination main
-          git checkout main || git checkout -b main  # Ensure main branch exists
+          git fetch destination main || echo "[LOG] No existing main branch"
+
+      - name: Debug Git Status
+        run: |
+          cd temp
+          echo "[LOG] Checking Git Status"
+          git status
+          git diff
 
       - name: Sync and Push Changes
         run: |
@@ -38,12 +44,12 @@ jobs:
           echo "[LOG] Staging changes"
           git add .
 
-          if git diff --quiet; then
+          if git diff --staged --quiet; then
             echo "[LOG] No changes to commit."
           else
             echo "[LOG] Committing changes"
             git commit -m "Sync from granwyntan/BytePenguin"
 
             echo "[LOG] Pushing changes"
-            git push --force destination main
+            git push --force destination main || echo "[ERROR] Push failed!"
           fi
