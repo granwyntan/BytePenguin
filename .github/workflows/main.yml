@@ -34,6 +34,7 @@ jobs:
           cd temp
           echo "[LOG] Adding destination remote repository"
           git remote add destination https://${{ secrets.GH_PAT }}@github.com/BytePenguinCode/BytePenguin.git
+          echo "[LOG] Fetching latest changes from destination"
           git fetch destination  # Fetch the latest changes from the destination repo
 
       # Clean destination repository (remove all old files)
@@ -81,5 +82,7 @@ jobs:
             echo "[LOG] Committing new files"
             git commit -m "Sync new files from granwyntan/BytePenguin"
             echo "[LOG] Pushing changes to BytePenguinCode/BytePenguin"
-            git push --force destination main || { echo "[ERROR] Push failed!"; exit 1; }
+
+            # Try to push to the destination, capture and handle any errors
+            git push destination main || { echo "[ERROR] Push failed!"; exit 1; }
           fi
