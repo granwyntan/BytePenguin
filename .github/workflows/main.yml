@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the source repo (granwyntan/BytePenguin)
       - name: Checkout Source Repository (granwyntan/BytePenguin)
         uses: actions/checkout@v4
         with:
@@ -20,34 +21,22 @@ jobs:
           token: ${{ secrets.GH_PAT }}  # Ensure this secret is set
           path: temp  # Clone into "temp" folder
 
+      # Set up Git for the destination repo (BytePenguinCode/BytePenguin)
       - name: Configure Git for Destination Repo (BytePenguinCode/BytePenguin)
         run: |
           echo "[LOG] Setting up Git"
           git config --global user.email "${{ secrets.USER_EMAIL }}"
           git config --global user.name "${{ secrets.USER_NAME }}"
 
+      # Add destination repository as remote and fetch latest changes
       - name: Add Destination Repository (BytePenguinCode/BytePenguin)
         run: |
           cd temp
           echo "[LOG] Adding destination remote repository"
           git remote add destination https://${{ secrets.GH_PAT }}@github.com/BytePenguinCode/BytePenguin.git
-          git fetch destination  # Fetch the destination repo
+          git fetch destination  # Fetch the latest changes from the destination repo
 
-      - name: Check for Main or Master Branch in Destination Repo
-        run: |
-          cd temp
-          echo "[LOG] Checking for main or master branch in destination repository"
-          if git show-ref --verify --quiet refs/remotes/destination/main; then
-            echo "[LOG] 'main' branch exists in destination."
-            export BRANCH="main"
-          elif git show-ref --verify --quiet refs/remotes/destination/master; then
-            echo "[LOG] 'master' branch exists in destination."
-            export BRANCH="master"
-          else
-            echo "[ERROR] Neither 'main' nor 'master' branch found in destination repository."
-            exit 1
-          fi
-
+      # Clean destination repository (remove all old files)
       - name: Clean Destination Repository (BytePenguinCode/BytePenguin)
         run: |
           cd temp
@@ -55,11 +44,13 @@ jobs:
           git rm -r --cached .  # Remove all files from the git index (without deleting from local)
           git commit -m "Clean the repository before syncing new files"  # Commit the removal of old files
 
+      # Copy files from the source repository to the temp folder
       - name: Copy Files from Source Repo to Temp Directory
         run: |
           echo "[LOG] Copying files from granwyntan/BytePenguin"
           cp -r * ../temp  # Copy all files from source to temp directory
 
+      # Debug Git Status
       - name: Debug Git Status
         run: |
           cd temp
@@ -67,15 +58,16 @@ jobs:
           git status
           git diff --stat
 
-      - name: Reset Remote Repository to Main/Master Branch
+      # Reset the destination repository to the latest state (force sync)
+      - name: Reset Destination Repository to Latest State
         run: |
           cd temp
-          echo "[LOG] Resetting to destination repository's main or master branch"
-          
-          git fetch destination $BRANCH
-          git reset --hard destination/$BRANCH
+          echo "[LOG] Resetting destination repository to the latest state"
+          git fetch destination
+          git reset --hard destination/main  # Reset to the main branch of the destination repo
           git clean -fd  # Clean untracked files
 
+      # Stage, commit, and push changes to the destination repository (BytePenguinCode/BytePenguin)
       - name: Sync and Push Changes to Destination Repo (BytePenguinCode/BytePenguin)
         run: |
           cd temp
@@ -89,5 +81,5 @@ jobs:
             echo "[LOG] Committing new files"
             git commit -m "Sync new files from granwyntan/BytePenguin"
             echo "[LOG] Pushing changes to BytePenguinCode/BytePenguin"
-            git push --force destination $BRANCH || { echo "[ERROR] Push failed!"; exit 1; }
+            git push --force destination main || { echo "[ERROR] Push failed!"; exit 1; }
           fi
