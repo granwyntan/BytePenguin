@@ -133,12 +133,12 @@
 
         <!-- Centered Chevron with Circle Background -->
         <div
-            class="absolute inset-x-0 bottom-8 lg:bottom-6 flex items-center justify-center z-30"
+            class="absolute inset-x-0 bottom-[10vh] lg:bottom-[2vh] flex items-center justify-center z-30"
         >
             <a href="#board-of-directors">
                 <svg
                     id="chevron-down"
-                    class="w-12 h-12 animate-bounce items-center justify-center p-2 rounded-full"
+                    class="w-12 h-12 animate-bounce items-center justify-center p-2 rounded-full bg-slate-50 shadow-lg"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
@@ -171,7 +171,7 @@
                     of technology and design.
                 </p>
 
-                <div class="w-full lg:w-1/2 flex justify-center">
+                <div class="w-full lg:w-1/2 flex justify-center max-h-[70vh]">
                     <img
                         src="/images/penguin-igloo.png"
                         alt="Penguin Igloo"
@@ -326,7 +326,9 @@
                             </h2>
                             <p class="text-gray-500">2024 ACJC Graduate</p>
                             <p class="text-gray-700 text-center mt-2">
-                                Lead Public Relations (PR) & Outreach Manager
+                                Lead Public Relations (PR) & Outreach Manager,
+                                <br />
+                                Junior Software Engineer & Developer
                             </p>
                         </div>
                     </div>
@@ -421,7 +423,7 @@
                             <p class="text-gray-500">2024 EJC Graduate</p>
                             <p class="text-gray-700 text-center mt-2">
                                 Beneficiary & Community Outreach Coordinator,<br />
-                                Software Engineering & Development Intern
+                                Junior Software Engineer & Developer
                             </p>
                         </div>
                     </div>
@@ -430,7 +432,8 @@
                         id="software-development-team"
                         class="scroll-mt-28 text-2xl md:text-3xl font-bold text-gray-900 text-center mt-12 mb-8"
                     >
-                        Software Engineering & Development Team
+                        UI/UX Architecture and Software Engineering &
+                        Development Team
                     </h1>
 
                     <div
@@ -540,24 +543,6 @@
                                 Software Engineer & Developer
                             </p>
                         </div>
-
-                        <!-- Team Member -->
-                        <div
-                            class="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center"
-                        >
-                            <img
-                                src="/images/defaultpfp.svg"
-                                alt="Pang Shi Bo"
-                                class="w-32 h-32 rounded-full object-cover"
-                            />
-                            <h2 class="text-xl font-semibold mt-4">
-                                Pang Shi Bo
-                            </h2>
-                            <p class="text-gray-500">2024 ASRJC Graduate</p>
-                            <p class="text-gray-700 text-center mt-2">
-                                Software Engineer & Developer
-                            </p>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -635,19 +620,11 @@
                             navbar.classList.remove("shadow-md"); // Remove shadow when menu is open
                             if (window.scrollY === 0) {
                                 mainContent.classList.add("pt-60"); // Add extra padding to shift content down
-                                chevronDown.classList.add(
-                                    "bg-white",
-                                    "shadow-lg"
-                                );
                             }
                         } else {
                             navbar.classList.add("shadow-md"); // Add shadow back when menu is closed
                             if (mainContent.classList.contains("pt-60")) {
                                 mainContent.classList.remove("pt-60"); // Remove extra padding when menu is closed
-                                chevronDown.classList.remove(
-                                    "bg-white",
-                                    "shadow-lg"
-                                );
                             }
                         }
                     });
