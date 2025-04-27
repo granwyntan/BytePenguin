@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>BytePenguin | About & Mission</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link
+            rel="icon"
+            href="/images/BytePenguinFavicon.png"
+            type="image/png"
+        />
+    </head>
+    <body class="bg-white font-poppins">
+        <div
+            id="landscape-warning"
+            class="hidden fixed inset-0 bg-gray-900 text-white flex items-center justify-center text-xl z-50"
+        >
+            Please rotate your device to portrait mode.
+        </div>
+        <header
+            id="navbar"
+            class="fixed bg-[#e6fffe] top-0 w-full shadow-md lg:px-6 z-40 transition-all duration-300"
+        >
+            <div
+                class="container mx-auto px-6 py-4 flex justify-between items-center"
+            >
+                <a
+                    href="index.html"
+                    class="flex items-center flex-shrink-0 text-black"
+                >
+                    <img
+                        src="/images/logo.png"
+                        alt="BytePenguin Logo"
+                        class="h-12 max-w-[70vw] lg:w-auto"
+                    />
+                </a>
+
+                <nav
+                    class="hidden lg:flex justify-center items-center gap-x-2 relative"
+                >
+                    <a
+                        href="index.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >Home</a
+                    >
+                    <a
+                        href="about.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >About</a
+                    >
+                    <a
+                        href="team.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >Our Team</a
+                    >
+                    <a
+                        href="projects.html"
+                        class="text-gray-700 hover:text-gray-900 hover:shadow-inner hover:bg-gray-50 active:shadow-inner px-4 py-2 transition-all rounded-md"
+                        >Projects</a
+                    >
+                </nav>
+
+                <button id="menu-btn" class="lg:hidden focus:outline-none">
+                    <svg
+                        id="menu-icon"
+                        class="w-6 h-6 text-gray-900"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        ></path>
+                    </svg>
+                    <svg
+                        id="close-icon"
+                        class="w-6 h-6 text-gray-900 hidden"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <div
+            id="mobile-menu"
+            class="hidden bg-[#e6fffe] fixed top-16 left-0 right-0 w-full px-6 py-6 transition-all duration-300 z-40 overflow-hidden shadow-md justify-center items-center space-y-1"
+        >
+            <a
+                href="index.html"
+                class="block py-2 px-4 text-base text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >Home</a
+            >
+            <a
+                href="about.html"
+                class="block py-2 px-4 text-base text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >About</a
+            >
+            <a
+                href="team.html"
+                class="block py-2 px-4 text-base text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >Our Team</a
+            >
+            <a
+                href="projects.html"
+                class="block py-2 px-4 text-base text-gray-700 rounded-md hover:bg-gray-50 hover:shadow-inner active:shadow-inner"
+                >Projects</a
+            >
+        </div>
+
+        <div id="main-content" class="relative pt-14">
+            <!-- About Section -->
+            <section class="py-12 container mx-auto px-6">
+                <div class="flex flex-col xl:flex-row items-center xl:gap-x-16 w-full">
+        
+                    <!-- About Text -->
+                    <div class="xl:w-1/2 text-center xl:text-left mb-10 xl:mb-0">
+                        <h1 class="text-4xl font-bold text-black mb-6 leading-tight">
+                            About BytePenguin
+                        </h1>
+                        <p class="text-lg text-gray-700 mb-6">
+                            We are a passionate collective from Singapore, with diverse backgrounds in computer science, engineering,
+                            humanities, and more. Our goal is simple yet impactful — to use technology to serve the community.
+                        </p>
+                        <p class="text-lg text-gray-700 mb-6">
+                            Our projects are not just tech showcases — they are bridges to real-world impact, collaborations with
+                            charities, and platforms for change.
+                        </p>
+                        <div class="bg-[#f0f9ff] rounded-xl p-6 shadow-md">
+                            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Why "BytePenguin"?</h2>
+                            <p class="text-gray-700">
+                                "Byte" signifies our dedication to technology and innovation. "Penguin" symbolizes resilience, teamwork,
+                                and mutual support — values we deeply embody as we work together to build meaningful digital solutions.
+                            </p>
+                        </div>
+                    </div>
+        
+                    <!-- About Image -->
+                    <div class="xl:w-1/2">
+                        <div class="relative group">
+                            <img src="/images/banner-img.png" alt="About BytePenguin" class="rounded-3xl w-full h-auto object-cover shadow-lg transform group-hover:scale-105 transition duration-500" />
+                            <div class="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/40 via-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                        </div>
+                    </div>
+        
+                </div>
+            </section>
+        
+            <!-- Mission Section -->
+            <section class="py-12 bg-[#e0fdf9]">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">
+                        Our Mission
+                    </h2>
+                    <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8">
+                        Our mission is to empower every innovative idea, no matter its size, by providing technical guidance, forging
+                        connections, and enabling sustainable growth for community-driven initiatives.
+                    </p>
+        
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
+                        <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition hover:bg-[#d0f0ff]">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Technical Guidance</h3>
+                            <p class="text-gray-700">
+                                We provide technical advice, resources, and mentorship to help community projects succeed.
+                            </p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition hover:bg-[#d0f0ff]">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Volunteer Connections</h3>
+                            <p class="text-gray-700">
+                                We match passionate volunteers with charities, non-profits, and initiatives that need their skills.
+                            </p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition hover:bg-[#d0f0ff]">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-3">Community Bridges</h3>
+                            <p class="text-gray-700">
+                                We build trust and transparency, connecting donors with credible initiatives for a lasting impact.
+                            </p>
+                        </div>
+                    </div>
+        
+                    <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+                        Together, we can leverage technology to drive change. Join our community of changemakers and let's create a
+                        brighter future, together.
+                    </p>
+        
+                    <div class="flex flex-col md:flex-row gap-4 justify-center">
+                        <a
+                            href="https://forms.gle/e4F2nxxWmdJXQuUa6"
+                            target="_blank"
+                            class="bg-[#f94f61] hover:bg-[#ff746c] text-white font-semibold py-3 px-6 rounded-xl text-lg transition"
+                        >
+                            Join Us
+                        </a>
+                        <a
+                            href="https://forms.gle/9yUP1NDtcLi34iyG9"
+                            target="_blank"
+                            class="bg-[#004aad] hover:bg-[#5271ff] text-white font-semibold py-3 px-6 rounded-xl text-lg transition"
+                        >
+                            Collaborate
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+
+        <footer class="bg-[#e6fffe] py-10">
+            <div class="container mx-auto px-4">
+                <!-- Desktop Layout: Two Columns -->
+                <div
+                    class="flex flex-col md:flex-row justify-between text-center md:text-left"
+                >
+                    <!-- Left Column: Logo and Copyright -->
+                    <div
+                        class="flex flex-col justify-between md:justify-center h-full md:px-8"
+                    >
+                        <img
+                            src="/images/footer-logo.png"
+                            alt="BytePenguin Footer Logo"
+                            class="mx-auto h-auto w-[40vw] md:w-[25vw] lg:w-[15vw] xl:w-[10vw] mb-4 md:mx-0"
+                        />
+                        <p class="text-gray-700 text-center md:text-left">
+                            &copy; 2025 BytePenguin. All Rights Reserved.
+                        </p>
+                    </div>
+
+                    <!-- Right Column: Contributors and Last Updated -->
+                    <div
+                        class="flex flex-col justify-between md:justify-center text-center md:text-right h-full md:px-8 px-6 py-4"
+                    >
+                        <p class="text-gray-700 text-xs md:text-sm mb-2">
+                            Contributors: Granwyn Tan, Isaac Chua, Kevin Chua,
+                            Ng Ying Xuan
+                        </p>
+                        <p
+                            class="text-gray-700 text-xs md:text-sm"
+                            id="last-updated"
+                        >
+                            Last Updated: 2025 Date...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const menuBtn = document.getElementById("menu-btn");
+                const mobileMenu = document.getElementById("mobile-menu");
+                const menuIcon = document.getElementById("menu-icon");
+                const closeIcon = document.getElementById("close-icon");
+                const mainContent = document.getElementById("main-content");
+                const navbar = document.getElementById("navbar");
+
+                // Check if all elements are found
+                if (
+                    menuBtn &&
+                    mobileMenu &&
+                    menuIcon &&
+                    closeIcon &&
+                    mainContent &&
+                    navbar
+                ) {
+                    menuBtn.addEventListener("click", function () {
+                        const menuIsVisible =
+                            mobileMenu.classList.contains("hidden");
+
+                        // Toggle mobile menu visibility
+                        mobileMenu.classList.toggle("hidden", !menuIsVisible);
+                        menuIcon.classList.toggle("hidden", menuIsVisible);
+                        closeIcon.classList.toggle("hidden", !menuIsVisible);
+
+                        // Shift main content up or down
+                        if (menuIsVisible) {
+                            navbar.classList.remove("shadow-md"); // Remove shadow when menu is open
+                            if (window.scrollY === 0) {
+                                mainContent.classList.add("pt-64"); // Add extra padding to shift content down
+                            }
+                        } else {
+                            navbar.classList.add("shadow-md"); // Add shadow back when menu is closed
+                            if (mainContent.classList.contains("pt-64")) {
+                                mainContent.classList.remove("pt-64"); // Remove extra padding when menu is closed
+                            }
+                        }
+                    });
+                } else {
+                    console.error("Mobile menu elements not found!");
+                }
+            });
+            function checkOrientation() {
+                const isMobile = /iPhone|Android/i.test(navigator.userAgent);
+                const warning = document.getElementById("landscape-warning");
+
+                if (isMobile && window.innerWidth > window.innerHeight) {
+                    warning.classList.remove("hidden");
+                    document.body.style.overflow = "hidden"; // Disable scrolling
+                } else {
+                    warning.classList.add("hidden");
+                    document.body.style.overflow = ""; // Re-enable scrolling
+                }
+            }
+
+            window.addEventListener("resize", checkOrientation);
+            window.addEventListener("load", checkOrientation);
+        </script>
+        <script src="/js/loadFooter.js"></script>
+    </body>
+</html>
